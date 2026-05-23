@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Login - Sri Lankan Transport Portal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0; padding: 0;
+      background-image: url('bus-background.png'); /* ✅ relative path */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: inherit;
+      background-size: cover;
+      background-position: center;
+      filter: blur(4px) brightness(0.75);
+      z-index: -1;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      border-bottom: 4px solid #ff9800;
+    }
+
+    .login-container {
+      width: 90%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+      margin: 100px auto;
+      text-align: center;
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-btn {
+      background-color: #ff9800;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-btn:hover { background-color: #e68900; }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #fff;
+    }
+
+    .footer a {
+      color: #ff9800;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  Sri Lankan Transport Portal - User Login
+</header>
+
+<div class="login-container">
+  <h2>User Login</h2>
+  <form>
+    <div class="form-group">
+      <label for="username">Username / Email:</label>
+      <input type="text" id="username" name="username" placeholder="Enter Username or Email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter Password">
+    </div>
+    <button type="submit" class="login-btn">Login</button>
+  </form>
+</div>
+
+<div class="footer">
+  <p>&copy; 2026 Sri Lankan Transport Portal</p>
+  <a href="index.html">Back to Homepage</a>
+  <a href="Staff Login.html">Staff Login</a>
+</div>
+
+</body>
+</html>
