@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sri Lankan Transport Portal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0; padding: 0;
+      background-image: url('C:/Users/yomal/Documents/DBMS Project/bus-background.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    /* Blur overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: inherit;
+      background-size: cover;
+      background-position: center;
+      filter: blur(4px) brightness(0.75);
+      z-index: -1;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 { margin: 0; }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav button {
+      background-color: #ff9800;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav button:hover { background-color: #e68900; }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding-top: 100px;
+    }
+
+    /* Animated welcome letters */
+    .welcome {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 150px;
+      font-size: 52px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .welcome span {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: riseUp 0.8s forwards;
+    }
+
+    .welcome span:nth-child(n) {
+      animation-delay: calc(0.08s * var(--i));
+    }
+
+    @keyframes riseUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .arrow {
+      position: absolute;
+      bottom: 40px;
+      font-size: 50px;
+      color: white;
+      animation: bounce 1.5s infinite;
+      cursor: pointer;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-15px); }
+      60% { transform: translateY(-8px); }
+    }
+
+    .container {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+    }
+
+    .form-group { margin-bottom: 15px; }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .submit-btn {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover { background-color: #555; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Bus Booking</h1>
+  <nav>
+    <button>Homepage</button>
+    <button>User Login</button>
+    <button>Staff Login</button>
+    <button>Contact Us</button>
+    <button>Inquire</button>
+  </nav>
+</header>
+
+<!-- Welcome Section -->
+<section id="welcome">
+  <div class="welcome">
+    <!-- Each letter wrapped in span with index -->
+    <span style="--i:1">W</span><span style="--i:2">e</span><span style="--i:3">l</span><span style="--i:4">c</span><span style="--i:5">o</span><span style="--i:6">m</span><span style="--i:7">e</span>
+    <span style="--i:8">&nbsp;</span>
+    <span style="--i:9">t</span><span style="--i:10">o</span>
+    <span style="--i:11">&nbsp;</span>
+    <span style="--i:12">S</span><span style="--i:13">r</span><span style="--i:14">i</span>
+    <span style="--i:15">&nbsp;</span>
+    <span style="--i:16">L</span><span style="--i:17">a</span><span style="--i:18">n</span><span style="--i:19">k</span><span style="--i:20">a</span><span style="--i:21">n</span>
+    <span style="--i:22">&nbsp;</span>
+    <span style="--i:23">T</span><span style="--i:24">r</span><span style="--i:25">a</span><span style="--i:26">n</span><span style="--i:27">s</span><span style="--i:28">p</span><span style="--i:29">o</span><span style="--i:30">r</span><span style="--i:31">t</span>
+    <span style="--i:32">&nbsp;</span>
+    <span style="--i:33">P</span><span style="--i:34">o</span><span style="--i:35">r</span><span style="--i:36">t</span><span style="--i:37">a</span><span style="--i:38">l</span>
+  </div>
+  <div class="arrow" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">&#8595;</div>
+</section>
+
+<!-- Booking Section -->
+<section id="booking">
+  <div class="container">
+    <h2>Book Your Bus</h2>
+    <form>
+      <div class="form-group">
+        <label for="start">Start Location:</label>
+        <input list="busStops" id="start" name="start" placeholder="Enter or select starting point">
+      </div>
+      <div class="form-group">
+        <label for="destination">Destination:</label>
+        <input list="busStops" id="destination" name="destination" placeholder="Enter or select destination">
+      </div>
+      <datalist id="busStops">
+        <option value="Colombo Fort">
+        <option value="Pettah">
+        <option value="Maharagama">
+        <option value="Kadawatha">
+        <option value="Gampaha">
+        <option value="Peradeniya">
+        <option value="Kandy">
+      </datalist>
+      <div class="form-group">
+        <label for="busType">Type of Bus:</label>
+        <select id="busType" name="busType">
+          <option value="normal">Normal</option>
+          <option value="luxury">Luxury</option>
+          <option value="semi-luxury">Semi-Luxury</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="passengers">Number of Passengers:</label>
+        <input type="number" id="passengers" name="passengers" min="1" max="50">
+      </div>
+      <button type="submit" class="submit-btn">Search Buses</button>
+    </form>
+  </div>
+</section>
+
+</body>
+</html>
