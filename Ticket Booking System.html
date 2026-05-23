@@ -7,19 +7,13 @@
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0; padding: 0;
-      background-image: url('bus-background.png'); /* ✅ relative path for GitHub */
+      background-image: url('bus-background.png'); /* ✅ relative path */
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       overflow-x: hidden;
-
-      background-image: url('bus-background.png'); /* same folder as index.html */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
     }
 
-    /* Blur overlay */
     body::before {
       content: "";
       position: fixed;
@@ -45,8 +39,6 @@
       z-index: 1000;
     }
 
-    header h1 { margin: 0; }
-
     nav {
       display: flex;
       gap: 15px;
@@ -64,6 +56,13 @@
 
     nav button:hover { background-color: #e68900; }
 
+    @media (max-width: 768px) {
+      nav button {
+        padding: 12px 18px;
+        font-size: 18px;
+      }
+    }
+
     section {
       min-height: 100vh;
       display: flex;
@@ -73,28 +72,16 @@
       padding-top: 100px;
     }
 
-    /* Animated welcome letters */
     .welcome {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 150px;
       font-size: 52px;
       font-weight: bold;
       color: white;
+      margin-top: 150px;
+      animation: fadeIn 2s ease;
     }
 
-    .welcome span {
-      opacity: 0;
-      transform: translateY(40px);
-      animation: riseUp 0.8s forwards;
-    }
-
-    .welcome span:nth-child(n) {
-      animation-delay: calc(0.08s * var(--i));
-    }
-
-    @keyframes riseUp {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -108,48 +95,82 @@
     }
 
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      0%,20%,50%,80%,100% { transform: translateY(0); }
       40% { transform: translateY(-15px); }
       60% { transform: translateY(-8px); }
     }
 
     .container {
-      max-width: 600px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 25px;
-      border-radius: 12px;
+      width: 80%;
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 15px;
       box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+      position: relative;
     }
 
-    .form-group { margin-bottom: 15px; }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
+    .form-group { margin-bottom: 20px; }
+
+    label { font-weight: bold; display: block; margin-bottom: 5px; }
 
     input, select {
       width: 100%;
-      padding: 10px;
-      box-sizing: border-box;
+      padding: 12px;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+
+    .arrow-btn {
+      position: absolute;
+      bottom: 20px;
+      font-size: 30px;
+      background: #ff9800;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .arrow-btn:hover { transform: scale(1.2); }
+
+    .arrow-next { right: 20px; }
+    .arrow-back { left: 20px; }
 
     .submit-btn {
       background-color: #333;
       color: #fff;
       border: none;
-      padding: 12px;
+      padding: 14px;
       cursor: pointer;
       width: 100%;
       border-radius: 5px;
-      font-size: 16px;
+      font-size: 18px;
       transition: background-color 0.3s ease;
     }
-
     .submit-btn:hover { background-color: #555; }
+
+    footer {
+      background-color: rgba(0,0,0,0.7);
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+    }
+    footer button {
+      background-color: #ff9800;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    footer button:hover { background-color: #e68900; }
   </style>
 </head>
 <body>
@@ -157,29 +178,15 @@
 <header>
   <h1>Bus Booking</h1>
   <nav>
+    <button onclick="location.href='user-login.html'">User Login</button>
+    <button onclick="location.href='staff-login.html'">Staff Login</button>
     <button>Homepage</button>
-    <button>User Login</button>
-    <button>Staff Login</button>
-    <button>Contact Us</button>
-    <button>Inquire</button>
   </nav>
 </header>
 
 <!-- Welcome Section -->
 <section id="welcome">
-  <div class="welcome">
-    <span style="--i:1">W</span><span style="--i:2">e</span><span style="--i:3">l</span><span style="--i:4">c</span><span style="--i:5">o</span><span style="--i:6">m</span><span style="--i:7">e</span>
-    <span style="--i:8">&nbsp;</span>
-    <span style="--i:9">t</span><span style="--i:10">o</span>
-    <span style="--i:11">&nbsp;</span>
-    <span style="--i:12">S</span><span style="--i:13">r</span><span style="--i:14">i</span>
-    <span style="--i:15">&nbsp;</span>
-    <span style="--i:16">L</span><span style="--i:17">a</span><span style="--i:18">n</span><span style="--i:19">k</span><span style="--i:20">a</span><span style="--i:21">n</span>
-    <span style="--i:22">&nbsp;</span>
-    <span style="--i:23">T</span><span style="--i:24">r</span><span style="--i:25">a</span><span style="--i:26">n</span><span style="--i:27">s</span><span style="--i:28">p</span><span style="--i:29">o</span><span style="--i:30">r</span><span style="--i:31">t</span>
-    <span style="--i:32">&nbsp;</span>
-    <span style="--i:33">P</span><span style="--i:34">o</span><span style="--i:35">r</span><span style="--i:36">t</span><span style="--i:37">a</span><span style="--i:38">l</span>
-  </div>
+  <div class="welcome">Welcome to Sri Lankan Transport Portal</div>
   <div class="arrow" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">&#8595;</div>
 </section>
 
@@ -188,14 +195,49 @@
   <div class="container">
     <h2>Book Your Bus</h2>
     <form>
-      <div class="form-group">
-        <label for="start">Start Location:</label>
-        <input list="busStops" id="start" name="start" placeholder="Enter or select starting point">
+      <!-- Step 1 -->
+      <div class="form-step active" id="step1">
+        <div class="form-group">
+          <label for="start">Start Location:</label>
+          <input list="busStops" id="start" name="start" placeholder="Enter or select starting point">
+        </div>
+        <button type="button" class="arrow-btn arrow-next" onclick="nextStep(2)">&#8594;</button>
       </div>
-      <div class="form-group">
-        <label for="destination">Destination:</label>
-        <input list="busStops" id="destination" name="destination" placeholder="Enter or select destination">
+
+      <!-- Step 2 -->
+      <div class="form-step" id="step2">
+        <div class="form-group">
+          <label for="destination">Destination:</label>
+          <input list="busStops" id="destination" name="destination" placeholder="Enter or select destination">
+        </div>
+        <button type="button" class="arrow-btn arrow-back" onclick="nextStep(1)">&#8592;</button>
+        <button type="button" class="arrow-btn arrow-next" onclick="nextStep(3)">&#8594;</button>
       </div>
+
+      <!-- Step 3 -->
+      <div class="form-step" id="step3">
+        <div class="form-group">
+          <label for="busType">Type of Bus:</label>
+          <select id="busType" name="busType">
+            <option value="normal">Normal</option>
+            <option value="luxury">Luxury</option>
+            <option value="semi-luxury">Semi-Luxury</option>
+          </select>
+        </div>
+        <button type="button" class="arrow-btn arrow-back" onclick="nextStep(2)">&#8592;</button>
+        <button type="button" class="arrow-btn arrow-next" onclick="nextStep(4)">&#8594;</button>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="form-step" id="step4">
+        <div class="form-group">
+          <label for="passengers">Number of Passengers:</label>
+          <input type="number" id="passengers" name="passengers" min="1" max="50">
+        </div>
+        <button type="button" class="arrow-btn arrow-back" onclick="nextStep(3)">&#8592;</button>
+        <button type="submit" class="submit-btn">Search Buses</button>
+      </div>
+
       <datalist id="busStops">
         <option value="Colombo Fort">
         <option value="Pettah">
@@ -205,22 +247,20 @@
         <option value="Peradeniya">
         <option value="Kandy">
       </datalist>
-      <div class="form-group">
-        <label for="busType">Type of Bus:</label>
-        <select id="busType" name="busType">
-          <option value="normal">Normal</option>
-          <option value="luxury">Luxury</option>
-          <option value="semi-luxury">Semi-Luxury</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="passengers">Number of Passengers:</label>
-        <input type="number" id="passengers" name="passengers" min="1" max="50">
-      </div>
-      <button type="submit" class="submit-btn">Search Buses</button>
     </form>
   </div>
 </section>
 
-</body>
-</html>
+<footer>
+  <button>Contact Us</button>
+  <button>Inquire</button>
+  <div class="footer-icons">🚌 🚍 🚏</div>
+</footer>
+
+<script>
+  function nextStep(step) {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('step' + step).classList.add('active');
+  }
+</script>
+
